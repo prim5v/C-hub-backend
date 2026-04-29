@@ -11,8 +11,12 @@ def clerk_sync():
     data = request.get_json()
     print("📥 REQUEST DATA:", data)
     email = data.get("email")
-    print("📧 EMAIL:", email)
-    response = clerk_syncing(email)
+    pushToken = data.get("pushToken")
+    name = data.get("name")
+    lng = data.get("lng")
+    lat = data.get("lat")
+    # print("📧 EMAIL:", email)
+    response = clerk_syncing(email, pushToken, name, lng, lat)
     return response
 
 # http://127.0.0.1:5000/auth/clerk/sync

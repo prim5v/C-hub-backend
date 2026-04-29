@@ -1,10 +1,15 @@
-CREATE TABLE users (
+CREATE TABLE users_new (
     id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255),
     clerk_id VARCHAR(255) UNIQUE NOT NULL,
+    push_token TEXT,
     email VARCHAR(255),
-    role VARCHAR(50) DEFAULT 'custormer',
+    role VARCHAR(50) DEFAULT 'customer',
+    lat DOUBLE PRECISION,
+    lng DOUBLE PRECISION,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,

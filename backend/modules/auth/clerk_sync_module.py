@@ -5,7 +5,7 @@ from flask import jsonify, g
 
 logger = logging.getLogger(__name__)
 
-def clerk_syncing(email):
+def clerk_syncing(email, pushToken, name, lng, lat):
     start_time = time.time()
 
     clerk_id = getattr(g, "user_id", None)
@@ -23,6 +23,13 @@ def clerk_syncing(email):
     if not clerk_id:
         logger.warning("SYNC_ABORT_NO_USER_ID")
         return jsonify({"error": "Missing user_id from token"}), 401
+    
+    if not pushToken:
+        logger.warning(
+            "SYNC_ABORT_NO_PUSH_TOKEN", 
+            extra={"clerk_id": clerk_id}
+        )
+        return jsonify({"error": "Push token is required"}), 400
 
     if not email:
         logger.warning(
@@ -55,11 +62,11 @@ def clerk_syncing(email):
 
             cursor.execute(
                 """
-                INSERT INTO users (clerk_id, email, role)
-                VALUES (%s, %s, %s)
+                INSERT INTO users (clerk_id, email, role, push_token, full_name, lng, lat)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
                 RETURNING *;
                 """,
-                (clerk_id, email, "customer")
+                (clerk_id, email, "comrade", pushToken, name, lng, lat)
             )
 
             conn.commit()

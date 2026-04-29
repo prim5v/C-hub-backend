@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 
 # ================= CONFIG =================
 
-CLERK_JWKS_URL = "https://distinct-lemur-60.clerk.accounts.dev/.well-known/jwks.json"
-CLERK_ISSUER = "https://distinct-lemur-60.clerk.accounts.dev"
+CLERK_JWKS_URL = "https://well-ladybird-60.clerk.accounts.dev/.well-known/jwks.json"
+CLERK_ISSUER = "https://well-ladybird-60.clerk.accounts.dev"
 
 _jwks_cache = None
 

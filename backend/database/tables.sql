@@ -67,3 +67,7 @@ CREATE TABLE products (
 
 -- {"products": [{"size": "M", "quantity": 2, "product_id": "prod_1"}]}
 
+Create TABLE IF NOT EXISTS users_preferences (
+    id SERIAL PRIMARY KEY,
+    
+);

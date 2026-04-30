@@ -76,3 +76,31 @@ Create TABLE IF NOT EXISTS users_preferences (
     id SERIAL PRIMARY KEY,
     
 );
+
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    clerk_id VARCHAR(255) UNIQUE NOT NULL,
+    full_name VARCHAR(255),
+    email VARCHAR(255),
+    role VARCHAR(50) DEFAULT 'customer',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE user_devices (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+
+    push_token TEXT NOT NULL,
+    
+    device_id VARCHAR(255),        -- optional (unique device fingerprint)
+    platform VARCHAR(50),          -- ios | android | web
+    device_name VARCHAR(100),      -- "iPhone 14", "Samsung S21"
+
+    lat DOUBLE PRECISION,
+    lng DOUBLE PRECISION,
+
+    last_active TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

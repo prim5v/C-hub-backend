@@ -13,7 +13,7 @@ def clerk_sync():
 
     email = data.get("email")
     pushToken = data.get("pushToken")
-    full_name = data.get("full_name")
+    name = data.get("name")
 
     location = data.get("location") or {}
     lng = location.get("lng")
@@ -22,7 +22,7 @@ def clerk_sync():
     response = clerk_syncing(
         email=email,
         pushToken=pushToken,
-        name=full_name,
+        name=name,
         lng=lng,
         lat=lat
     )

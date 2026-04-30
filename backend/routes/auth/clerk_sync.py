@@ -10,13 +10,23 @@ def clerk_sync():
     print("🔥 ROUTE HIT")
     data = request.get_json()
     print("📥 REQUEST DATA:", data)
+
     email = data.get("email")
     pushToken = data.get("pushToken")
-    name = data.get("name")
-    lng = data.get("lng")
-    lat = data.get("lat")
-    # print("📧 EMAIL:", email)
-    response = clerk_syncing(email, pushToken, name, lng, lat)
+    full_name = data.get("full_name")
+
+    location = data.get("location") or {}
+    lng = location.get("lng")
+    lat = location.get("lat")
+
+    response = clerk_syncing(
+        email=email,
+        pushToken=pushToken,
+        name=full_name,
+        lng=lng,
+        lat=lat
+    )
+
     return response
 
 # http://127.0.0.1:5000/auth/clerk/sync

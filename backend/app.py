@@ -8,6 +8,7 @@ from backend.routes.auth import auth_bp
 from backend.routes.mpesaPayments import payments_bp
 from backend.middleware.limiter import limiter
 from backend.utils.db import check_db_connection
+from backend.utils.cron import start_scheduler
 
 app = Flask(__name__)
 
@@ -56,6 +57,9 @@ def ratelimit_error(e):
         "error": "Too many requests — slow down.",
         "details": str(e.description)
     }), 429
+
+# start cron job
+start_scheduler()
 
 # ================= HEALTH CHECK =================
 @app.route("/ping", methods=["GET"])

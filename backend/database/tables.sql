@@ -104,3 +104,13 @@ CREATE TABLE user_devices (
     last_active TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE campuses (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    campus VARCHAR(255) NOT NULL, -- e.g. "Main Campus", "City Campus"
+    color VARCHAR(50) NOT NULL,
+    initials VARCHAR(10) NOT NULL,
+    coordinates JSONB NOT NULL,  -- {"lat": 1.234, "lng": 2.345}
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

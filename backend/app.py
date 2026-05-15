@@ -6,6 +6,7 @@ from flask_socketio import SocketIO
 from backend.routes.auth import auth_bp
 # from backend.routes.admin import admin_bp
 from backend.routes.mpesaPayments import payments_bp
+from backend.routes.comrade import comrade_bp
 from backend.middleware.limiter import limiter
 from backend.utils.db import check_db_connection
 from backend.utils.cron import start_scheduler
@@ -100,6 +101,7 @@ def db_health():
 app.register_blueprint(auth_bp)
 # app.register_blueprint(admin_bp)
 app.register_blueprint(payments_bp)
+app.register_blueprint(comrade_bp)
 
 if __name__ == "__main__":
     # app.run(debug=True)

@@ -9,7 +9,8 @@ def updateMpesaSessionFailed(checkout_request_id):
             UPDATE mpesa_sessions
             SET status='failed'
             WHERE checkout_request_id=%s
-            """(checkout_request_id,)
+            """,
+            (checkout_request_id,)
         )
         conn.commit()
     finally:
@@ -26,10 +27,11 @@ def updateMpesaSessionSuccess(checkout_request_id):
             UPDATE mpesa_sessions
             SET status='success'
             WHERE checkout_request_id=%s
-            """(checkout_request_id,)
+            """,
+            (checkout_request_id,)
         )
         conn.commit()
 
     finally:
         cursor.close()
-        conn.close()
+        conn.close()    

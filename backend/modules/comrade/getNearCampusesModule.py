@@ -23,6 +23,8 @@ def get_nearby_campuses():
 
     try:
         data = request.get_json()
+        print("RAW BODY:", request.data)
+        print("JSON:", request.get_json())
 
         user_lat = data.get("lat")
         user_lng = data.get("lng")

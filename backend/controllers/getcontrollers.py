@@ -38,3 +38,16 @@ def get_all_orders(page=1, limit=10):
     finally:
         cursor.close()
         conn.close()
+
+
+def get_all_campuses():
+    conn, cursor = get_db_cursor()
+    try:
+        cursor.execute("""
+            SELECT id, name, campus, color, initials, coordinates
+            FROM campuses
+        """)
+        return cursor.fetchall()
+    finally:
+        cursor.close()
+        conn.close()

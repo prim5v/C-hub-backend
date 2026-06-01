@@ -150,7 +150,7 @@ def check_rooms(campus_id):
 
                 jsonb_build_object(
                     'address', COALESCE(l.address, ''),
-                    'coordinates', COALESCE(l.coordinates, '{}'::jsonb)
+                    'coordinate', COALESCE(l.coordinate, '{}'::jsonb)
                 ) AS location,
 
                 COALESCE(

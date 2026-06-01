@@ -166,7 +166,7 @@ def check_rooms(campus_id):
 
             FROM rooms r
 
-            LEFT JOIN accommodatives a ON a.room_id = r.id
+            LEFT JOIN accomodatives a ON a.room_id = r.id
             LEFT JOIN location_data l ON l.room_id = r.id
             LEFT JOIN images i ON i.room_id = r.id
             LEFT JOIN room_amenities ra ON ra.room_id = r.id

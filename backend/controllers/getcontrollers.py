@@ -148,7 +148,10 @@ def check_rooms(campus_id):
                 COALESCE(a.furnished, false) AS furnished,
                 COALESCE(a.self_contained, false) AS self_contained,
 
-                COALESCE(l.address, '') AS location,
+                jsonb_build_object(
+                    'address', COALESCE(l.address, ''),
+                    'coordinates', COALESCE(l.coordinates, '{}'::jsonb)
+                ) AS location,
 
                 COALESCE(
                     json_agg(DISTINCT i.image_url) 

@@ -139,6 +139,8 @@ def check_rooms(campus_id):
                 r.title,
                 r.room_type,
                 r.distance,
+                r.deposits,
+                r.extras,
                 r.price,
                 r.room_description,
 

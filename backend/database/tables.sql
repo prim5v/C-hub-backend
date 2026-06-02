@@ -118,8 +118,54 @@ CREATE TABLE rooms(
     distance VARCHAR(50),
     price DECIMAL(10, 2),
     room_description VARCHAR(255),
+    deposits JSONB NOT NULL,
+    extras JSONB NOT NULL,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE rooms
+ADD COLUMN deposits JSONB NOT NULL DEFAULT '[]'::jsonb;
+
+ALTER TABLE rooms
+ADD COLUMN extras JSONB NOT NULL DEFAULT '[]'::jsonb;
+
+
+{
+  "deposits": [
+    {
+      "name": "Security Deposit",
+      "amount": 5000
+    }
+  ],
+  "extras": [
+    {
+      "name": "WiFi",
+      "amount": 1000
+    },
+    {
+      "name": "Parking",
+      "amount": 2000
+    }
+  ]
+}
+
+{
+  "water": 500,
+  "electricity": 1000
+}
+
+[
+  {
+    "name": "WiFi",
+    "amount": 1000
+  },
+  {
+    "name": "Parking",
+    "amount": 2000
+  }
+]
+
+
 
 CREATE TABLE amenities(
     id SERIAL PRIMARY KEY,

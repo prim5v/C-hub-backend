@@ -55,7 +55,9 @@ def fetch_rooms(campus_id):
                     "images": room["images"],
                     "amenities": room["amenities"],
 
-                    "description": room["room_description"]
+                    "description": room["room_description"],
+                    "deposits": room["deposits"],
+                    "extras": room["extras"]
                 })    
             # Cache the response for 1 hour
             try:
